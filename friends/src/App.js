@@ -41,11 +41,15 @@ export default class App extends Component {
    .post('http://localhost:5000/friends', newObj)
    .then(res => {
     // console.log('res', res);
-    this.setState({ friends: res.data });
+    this.setState({ friends: res.data, name: '', age: 0, email: '' });
    })
    .catch(err => {
     console.log(err);
    });
+ };
+
+ handleDelete = id => {
+  console.log(id);
  };
 
  render() {
@@ -56,10 +60,19 @@ export default class App extends Component {
      handleChange={this.handleChange}
      friends={this.state.friends}
      handleSubmit={this.handleSubmit}
+     name={this.state.name}
+     age={this.state.age}
+     email={this.state.email}
     />
     <Row className="displayFlex">
      {this.state.friends.map(friend => {
-      return <ListFriends key={friend.id} friend={friend} />;
+      return (
+       <ListFriends
+        key={friend.id}
+        friend={friend}
+        handleDelete={this.handleDelete}
+       />
+      );
      })}
     </Row>
    </div>

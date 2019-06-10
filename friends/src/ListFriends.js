@@ -9,7 +9,7 @@ const ListFriends = props => {
     <CardTitle>{props.friend.name}</CardTitle>
     <CardText>{props.friend.age}</CardText>
     <CardText>{props.friend.email}</CardText>
-    <Button>Go somewhere</Button>
+    <Button>Delete</Button>
    </Card>
   </Col>
  );

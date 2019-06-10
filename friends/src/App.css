@@ -25,30 +25,15 @@
  color: #61dafb;
 }
 
-.displayFlex {
- display: flex;
- align-items: space-between;
- justify-content: space-between;
- flex-wrap: wrap;
+.addFriend {
+ width: 45%;
+ text-align: left;
+ border: 1px solid gray;
+ border-radius: 3px;
+ padding: 20px;
+ margin-bottom: 20px;
 }
 
 .cardWrapper {
- margin: 20px;
- border: 1px gray solid;
- padding: 20px;
- border-radius: 2px;
- width: 35%;
+ margin-bottom: 20px;
 }
-@media only screen and (max-width: 580px) {
- .cardWrapper {
-  width: 70%;
-  margin: 20px auto 0;
- }
-}
-
-/* .cardBody {
- height: auto;
- max-height: 250px;
- width: auto;
- max-width: 250px;
-} */

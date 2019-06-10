@@ -37,3 +37,11 @@
 .cardWrapper {
  margin-bottom: 20px;
 }
+
+.btnCard {
+ width: 50%;
+}
+
+.displayFlex {
+ display: flex;
+}

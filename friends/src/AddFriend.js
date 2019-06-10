@@ -17,6 +17,7 @@ class AddFriend extends Component {
        id="exampleName"
        placeholder="Name placeholder"
        onChange={this.props.handleChange}
+       value={this.props.name}
       />
      </FormGroup>
      <FormGroup>
@@ -27,6 +28,7 @@ class AddFriend extends Component {
        id="exampleAge"
        placeholder="Age placeholder"
        onChange={this.props.handleChange}
+       value={this.props.age}
       />
      </FormGroup>
      <FormGroup>
@@ -37,6 +39,7 @@ class AddFriend extends Component {
        id="exampleEmail"
        placeholder="with a placeholder"
        onChange={this.props.handleChange}
+       value={this.props.email}
       />
      </FormGroup>
      <Button onClick={this.props.handleSubmit}>Submit</Button>

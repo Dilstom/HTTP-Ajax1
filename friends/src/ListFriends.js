@@ -9,7 +9,15 @@ const ListFriends = props => {
     <CardTitle>{props.friend.name}</CardTitle>
     <CardText>{props.friend.age}</CardText>
     <CardText>{props.friend.email}</CardText>
-    <Button>Delete</Button>
+    <div className="displayFlex">
+     <Button
+      onClick={props.handleDelete(props.friend.id)}
+      className="btn btn-danger btn-sm btnCard"
+     >
+      Delete
+     </Button>
+     <Button className="btn btn-info btn-sm btnCard">Update</Button>
+    </div>
    </Card>
   </Col>
  );

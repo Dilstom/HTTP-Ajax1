@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, Button, CardTitle, CardText, Col } from 'reactstrap';
 
-const ListFriends = props => {
- console.log(props);
- return (
-  <Col className="cardWrapper">
-   <Card body>
-    <CardTitle>{props.friend.name}</CardTitle>
-    <CardText>{props.friend.age}</CardText>
-    <CardText>{props.friend.email}</CardText>
-    <div className="displayFlex">
-     <Button
-      onClick={props.handleDelete(props.friend.id)}
-      className="btn btn-danger btn-sm btnCard"
-     >
-      Delete
-     </Button>
-     <Button className="btn btn-info btn-sm btnCard">Update</Button>
-    </div>
-   </Card>
-  </Col>
- );
-};
+export default class ListFriends extends Component {
+ constructor() {
+  super();
+  this.state = {};
+ }
 
-export default ListFriends;
+ handleDelete = e => {
+  this.props.handleDelete(this.props.friend.id);
+ };
+
+ render() {
+  return (
+   <Col className="cardWrapper">
+    <Card body>
+     <CardTitle>{this.props.friend.name}</CardTitle>
+     <CardText>{this.props.friend.age}</CardText>
+     <CardText>{this.props.friend.email}</CardText>
+     <div className="displayFlex">
+      <Button
+       onClick={this.handleDelete}
+       className="btn btn-danger btn-sm btnCard"
+      >
+       Delete
+      </Button>
+      <Button className="btn btn-info btn-sm btnCard">Update</Button>
+     </div>
+    </Card>
+   </Col>
+  );
+ }
+}

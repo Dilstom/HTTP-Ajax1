@@ -50,6 +50,15 @@ export default class App extends Component {
 
  handleDelete = id => {
   console.log(id);
+  axios
+   .delete(`http://localhost:5000/friends/${id}`)
+   .then(res => {
+    console.log(res);
+    this.setState({ friends: res.data });
+   })
+   .catch(err => {
+    console.log(err);
+   });
  };
 
  render() {

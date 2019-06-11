@@ -31,7 +31,6 @@ export default class App extends Component {
  };
 
  handleSubmit = e => {
-  console.log('hi');
   const newObj = {
    name: this.state.name,
    age: this.state.age,
@@ -49,16 +48,27 @@ export default class App extends Component {
  };
 
  handleDelete = id => {
-  console.log(id);
+  //   console.log(id);
   axios
    .delete(`http://localhost:5000/friends/${id}`)
    .then(res => {
-    console.log(res);
+    // console.log(res);
     this.setState({ friends: res.data });
    })
    .catch(err => {
     console.log(err);
    });
+ };
+
+ handleUpdate = (obj, id) => {
+  console.log('click');
+  axios
+   .put(`http://localhost:5000/friends/${id}`, obj)
+   .then(res => {
+    console.log(res.data);
+    this.setState({ friends: res.data });
+   })
+   .catch(err => console.log(err));
  };
 
  render() {
@@ -80,6 +90,7 @@ export default class App extends Component {
         key={friend.id}
         friend={friend}
         handleDelete={this.handleDelete}
+        handleUpdate={this.handleUpdate}
        />
       );
      })}

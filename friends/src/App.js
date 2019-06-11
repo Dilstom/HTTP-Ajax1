@@ -13,6 +13,7 @@ export default class App extends Component {
    name: '',
    email: '',
    age: 0,
+   show: false,
   };
  }
 
@@ -40,7 +41,7 @@ export default class App extends Component {
    .post('http://localhost:5000/friends', newObj)
    .then(res => {
     // console.log('res', res);
-    this.setState({ friends: res.data, name: '', age: 0, email: '' });
+    this.setState({ friends: res.data, show: false });
    })
    .catch(err => {
     console.log(err);
@@ -60,6 +61,11 @@ export default class App extends Component {
    });
  };
 
+ showModal = e => {
+  e.preventDefault();
+  this.setState({ show: true });
+ };
+
  handleUpdate = (obj, id) => {
   console.log('click');
   axios
@@ -71,30 +77,53 @@ export default class App extends Component {
    .catch(err => console.log(err));
  };
 
+ handleClose = e => {
+  this.setState({ show: false });
+ };
+
  render() {
   return (
-   <div className="App">
-    <h1>Friends</h1>
-    <AddFriend
-     handleChange={this.handleChange}
-     friends={this.state.friends}
-     handleSubmit={this.handleSubmit}
-     name={this.state.name}
-     age={this.state.age}
-     email={this.state.email}
-    />
-    <Row className="displayFlex">
-     {this.state.friends.map(friend => {
-      return (
-       <ListFriends
-        key={friend.id}
-        friend={friend}
-        handleDelete={this.handleDelete}
-        handleUpdate={this.handleUpdate}
-       />
-      );
-     })}
-    </Row>
+   <div className="allWrapper">
+    <nav className="navbar navbar-light fixed-top bg-light justify-content-between">
+     <span className="navbar-brand  mb-0 h1">Friends</span>
+     <form className="form-inline">
+      <button
+       className="btn btn-outline-success my-2 my-sm-0"
+       type="submit"
+       onClick={this.showModal}
+      >
+       <i className="fa fa-plus mr-2" />
+       Add New Friend
+      </button>
+     </form>
+    </nav>
+    <div className="App">
+     {this.state.show ? (
+      <AddFriend
+       handleChange={this.handleChange}
+       friends={this.state.friends}
+       handleSubmit={this.handleSubmit}
+       name={this.state.name}
+       age={this.state.age}
+       email={this.state.email}
+       show={this.state.show}
+       handleClose={this.handleClose}
+      />
+     ) : null}
+     <h1 className="title">Your Friends</h1>
+     <Row className="displayFlex">
+      {this.state.friends.map(friend => {
+       return (
+        <ListFriends
+         key={friend.id}
+         friend={friend}
+         handleDelete={this.handleDelete}
+         handleUpdate={this.handleUpdate}
+        />
+       );
+      })}
+     </Row>
+    </div>
    </div>
   );
  }

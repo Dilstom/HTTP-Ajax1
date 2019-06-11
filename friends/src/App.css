@@ -45,3 +45,12 @@
 .displayFlex {
  display: flex;
 }
+
+.updateFriend {
+ width: 90%;
+ margin: 0 auto;
+}
+
+.btn-info {
+ margin: 0 20px;
+}

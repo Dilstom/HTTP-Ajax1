@@ -40,4 +40,4 @@ For reference,
 1. Expand the number of properties that you put on each friend object.
 1. Feel free to remove the dummy data on the server or modify it in any way.
 
-front end: https://5d000654f88877cc058b6fc5--friendsajax.netlify.com/
+front end: https://friendsajax.netlify.com/
